@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="post-content">
+    <h2>{{ post.title }}</h2>
+    <p><em>by {{ post.author }} on {{ post.published_date|date:"F d, Y" }}</em></p>
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="Image for {{ post.title }}" style="max-width: 100%; height: auto;">
+    {% endif %}
+    <p>{{ post.content }}</p>
+    <a href="{% url 'post_list' %}">Back to all posts</a>
+</div>
+{% endblock %}
